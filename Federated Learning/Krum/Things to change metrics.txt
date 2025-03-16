@@ -1,0 +1,7 @@
+Here we used num_Clients_to_evaluate value to set how many clients are considered to evaluate. As this is krum we check malicious clients and we 
+should think before calculating all clients outputs.
+
+num_malcious clients is used to check the number of malciouc clients system can
+expect.
+
+and other remains same as fedavg and prox.

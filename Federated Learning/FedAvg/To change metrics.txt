@@ -1,0 +1,1 @@
+To change the number of clients you can check the strategy and to set the number of rounds you need to change num_rounds.

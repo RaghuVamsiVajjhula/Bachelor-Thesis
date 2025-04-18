@@ -10,7 +10,7 @@ from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
 import os
 
-def plot_accuracy_history(history, epochs):
+def plot_accuracy_history(history, epochs,,save_path="server_plots/accuracy_point.txt"):
     plt.figure(figsize=(10, 6))
     plt.plot(range(1, epochs + 1), history.history['accuracy'], marker='o', color='blue', linewidth=2, label='Training Accuracy')
     plt.plot(range(1, epochs + 1), history.history['val_accuracy'], marker='o', color='green', linewidth=2, label='Validation Accuracy')
@@ -28,6 +28,9 @@ def plot_accuracy_history(history, epochs):
     os.makedirs('model_plots', exist_ok=True)
     plt.savefig('model_plots/accuracy_history.png')
     plt.show()
+    with open(save_path, "w") as f:
+        for acc in accuracy_history:
+            f.write(f"{acc}\n")
 
 def load_and_preprocess_data(file_path):
     dataset = pd.read_csv(file_path)
@@ -107,8 +110,10 @@ def main():
     )
     
     print("\nTraining completed. Generating accuracy graph...")
-    plot_accuracy_history(history, epochs)
-    
+    # plot_accuracy_history(history, epochs)
+    filename="server_plots/accuracy_point.txt"
+    plot_server_accuracy(accuracy_history,len(accuracy_history),save_path=filename)
+
     metrics = evaluate_model(model, x_test, y_test)
     
     model.save("LSTM_ACTIVITY_MODEL.h5")

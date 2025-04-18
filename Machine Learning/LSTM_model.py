@@ -10,7 +10,7 @@ from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
 import os
 
-def plot_accuracy_history(history, epochs,,save_path="server_plots/accuracy_point.txt"):
+def plot_accuracy_history(history, epochs,save_path="server_plots/accuracy_point.txt"):
     plt.figure(figsize=(10, 6))
     plt.plot(range(1, epochs + 1), history.history['accuracy'], marker='o', color='blue', linewidth=2, label='Training Accuracy')
     plt.plot(range(1, epochs + 1), history.history['val_accuracy'], marker='o', color='green', linewidth=2, label='Validation Accuracy')
